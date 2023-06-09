@@ -1,0 +1,49 @@
+# This is a basic workflow to help you get started with Actions
+
+name: TerraformTest
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  terraform-test:
+    # The type of runner that the job will run on
+    name: TerraformTest
+    runs-on: ubuntu-latest
+    environment: production
+    
+    defaults:
+      run:
+        shell: bash
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+      - uses: actions/checkout@v3
+
+      # Install Terraform CLI
+      - name: Setup Terraform
+      - uses: hashicorp/setup-terraform@v1
+        with:
+           terraform_version: 1.1.7
+
+      # Initialize
+      - name: Terraform init
+        run:  terraform init
+        
+      # Format
+      - name: Terraform format
+        run:  terraform fmt -check -recursive
+          
+      # Validate
+      - name: Terraform validate
+        run: terraform validate
