@@ -38,12 +38,12 @@ jobs:
 
       # Initialize
       - name: Terraform init
-        run:  terraform init
+      - run:  terraform init
         
       # Format
       - name: Terraform format
-        run:  terraform fmt -check -recursive
+      - run:  terraform fmt -check -recursive
           
       # Validate
       - name: Terraform validate
-        run: terraform validate
+      - run: terraform validate
