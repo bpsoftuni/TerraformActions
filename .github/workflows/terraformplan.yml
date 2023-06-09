@@ -51,7 +51,7 @@ jobs:
       
     # Save plan to artifacts
     - name: Save plan
-      run: terraform plan -out tfplan
+      run: terraform plan -out=tfplan
   terraformaply:
     name: 'TerraformApply'
     runs-on: ubuntu-latest
