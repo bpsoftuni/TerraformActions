@@ -47,7 +47,7 @@ jobs:
         
     # Generates execution plan for terraform
     - name: Gen tfplan
-      run: terraform plan
+      run: terraform plan -out=tfplan
       
   # Save plan to artifacts  
     - name: Publish Terraform Plan
