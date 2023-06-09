@@ -46,8 +46,8 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
     # Generates execution plan for terraform
-    - name: Gen tfplan
-      run: terraform plan
+   # - name: Gen tfplan
+   #   run: terraform plan
       
     # Save plan to artifacts
     - name: Save plan
@@ -81,4 +81,4 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
     - name: Terraform Apply
-      run: terraform apply -auto-approve tfplan
+      run: terraform apply "tfplan" -auto-approve
